@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "531537070392",
+    "project_id": "do20-flutter-4ed7f",
+    "storage_bucket": "do20-flutter-4ed7f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531537070392:android:cc84ca44a46ad8abe3d9cd",
+        "android_client_info": {
+          "package_name": "com.example.do20_application_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531537070392-15i48j77mfb8slfuka5lab07nrdqgtt8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmP8m4Y-YZRSx0Wci6GiQpwsDOcftO6TQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531537070392-15i48j77mfb8slfuka5lab07nrdqgtt8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "531537070392-j2i2u55c8pqp0lt0pec5l6ee4tck74p0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "do20.life.do20-flutter"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:531537070392:android:ab200f0ca019b34ae3d9cd",
+        "android_client_info": {
+          "package_name": "do20.life.do20_flutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "531537070392-15i48j77mfb8slfuka5lab07nrdqgtt8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmP8m4Y-YZRSx0Wci6GiQpwsDOcftO6TQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "531537070392-15i48j77mfb8slfuka5lab07nrdqgtt8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "531537070392-j2i2u55c8pqp0lt0pec5l6ee4tck74p0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "do20.life.do20-flutter"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

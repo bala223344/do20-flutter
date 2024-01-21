@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart' // new
     hide EmailAuthProvider, PhoneAuthProvider;    // new
 import 'package:flutter/material.dart';           // new
 import 'package:provider/provider.dart';          // new
-import 'package:flutter/material.dart';
 
 import 'src/widgets.dart';
 import 'app_state.dart';                          // new

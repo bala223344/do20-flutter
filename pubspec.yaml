@@ -22,6 +22,7 @@ dependencies:
   firebase_ui_auth: ^1.12.0
   google_sign_in: ^6.2.1
   firebase_ui_oauth_google: ^1.2.17
+  firebase_ui_oauth_apple: ^1.2.17
 
 dev_dependencies:
   flutter_test:

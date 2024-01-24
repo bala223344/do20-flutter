@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart'
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:firebase_ui_oauth_google/firebase_ui_oauth_google.dart'; // new
+import 'package:firebase_ui_oauth_apple/firebase_ui_oauth_apple.dart';
 
 import 'package:flutter/material.dart';
 
@@ -22,6 +23,8 @@ class ApplicationState extends ChangeNotifier {
 
     FirebaseUIAuth.configureProviders([
       EmailAuthProvider(),
+      PhoneAuthProvider(),
+      AppleProvider(),
       GoogleProvider(clientId: "531537070392-2fp4uuu10bkhlbov16r855j5nb0q3shl.apps.googleusercontent.com"),  // new
 
     ]);

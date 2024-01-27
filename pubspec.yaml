@@ -23,6 +23,8 @@ dependencies:
   google_sign_in: ^6.2.1
   firebase_ui_oauth_google: ^1.2.17
   firebase_ui_oauth_apple: ^1.2.17
+  intl: ^0.18.1
+  easy_localization: ^3.0.3
 
 dev_dependencies:
   flutter_test:
@@ -34,3 +36,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/codelab.png
+    - assets/translations/

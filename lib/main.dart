@@ -4,12 +4,13 @@
 import 'package:firebase_ui_auth/firebase_ui_auth.dart'; // new
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';               // new
+import 'package:go_router/go_router.dart'; // new
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';                 // new
-import 'app_state.dart';                                 // new
+import 'package:provider/provider.dart'; // new
+import 'app_state.dart'; // new
 import 'home_page.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 // Add GoRouter configuration outside the App class
 final _router = GoRouter(
@@ -88,13 +89,26 @@ final _router = GoRouter(
 );
 // end of GoRouter configuration
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
 
-  runApp(ChangeNotifierProvider(
-    create: (context) => ApplicationState(),
-    builder: ((context, child) => const App()),
-  ));
+
+  runApp(EasyLocalization(
+      supportedLocales: [Locale('en'), Locale('de')],
+      path:
+          'assets/translations', // <-- change the path of the translation files
+      fallbackLocale: Locale('en'),
+          useOnlyLangCode: true,
+
+      child: ChangeNotifierProvider(
+        create: (context) => ApplicationState(),
+        builder: ((context, child) => const App()),
+      )));
+      
+
+
+
 }
 
 class App extends StatelessWidget {
@@ -103,6 +117,9 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+       localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       title: 'Firebase Meetup',
       theme: ThemeData(
         buttonTheme: Theme.of(context).buttonTheme.copyWith(
@@ -115,7 +132,7 @@ class App extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         useMaterial3: true,
       ),
-      
+
       routerConfig: _router, // new
     );
   }

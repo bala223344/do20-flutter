@@ -10,6 +10,11 @@ import 'src/widgets.dart';
 import 'app_state.dart';                          // new
 import 'src/authentication.dart';                 // new
 
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:easy_localization/easy_localization.dart';
+
+
+
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -17,7 +22,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Firebase Meetup'),
+        title: const Text('example.helloWorld').tr(),
       ),
       body: ListView(
         children: <Widget>[

@@ -1,0 +1,7 @@
+{
+    "example": {
+      "hello": "Hallo ",
+      "world": "Welt!",
+      "helloWorld": "@:example.hello @:example.world"
+    }
+  }

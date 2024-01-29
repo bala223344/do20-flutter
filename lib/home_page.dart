@@ -10,16 +10,19 @@ import 'src/widgets.dart';
 import 'app_state.dart';                          // new
 import 'src/authentication.dart';                 // new
 
-import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+import 'package:go_router/go_router.dart';
 
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+   Widget  build (BuildContext context) {
+    
+  // context.setLocale(Locale('de'));
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('example.helloWorld').tr(),
@@ -48,6 +51,12 @@ class HomePage extends StatelessWidget {
           const Paragraph(
             'Join us for a day full of Firebase Workshops and Piz999!',
           ),
+           Center(
+        child: ElevatedButton(
+          onPressed: () => context.go('/lang'),
+          child: const Text('lang'),
+        ),
+           )
         ],
       ),
     );

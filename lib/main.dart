@@ -10,6 +10,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart'; // new
 import 'app_state.dart'; // new
 import 'home_page.dart';
+import 'lang_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 // Add GoRouter configuration outside the App class
@@ -83,9 +84,18 @@ final _router = GoRouter(
             );
           },
         ),
+        
+
+          GoRoute(
+        path: 'lang',
+         builder: (BuildContext  context, GoRouterState  state) => const LangPage(),
+   
+      ),
       ],
     ),
   ],
+    debugLogDiagnostics: true,
+
 );
 // end of GoRouter configuration
 

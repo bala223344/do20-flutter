@@ -13,6 +13,7 @@ import 'home_page.dart';
 import 'lang_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 
+
 // Add GoRouter configuration outside the App class
 final _router = GoRouter(
   routes: [
@@ -84,18 +85,15 @@ final _router = GoRouter(
             );
           },
         ),
-        
-
-          GoRoute(
-        path: 'lang',
-         builder: (BuildContext  context, GoRouterState  state) => const LangPage(),
-   
-      ),
+        GoRoute(
+          path: 'lang',
+          builder: (BuildContext context, GoRouterState state) =>
+              const LangPage(),
+        ),
       ],
     ),
   ],
-    debugLogDiagnostics: true,
-
+  debugLogDiagnostics: true,
 );
 // end of GoRouter configuration
 
@@ -104,21 +102,19 @@ void main() async {
   await EasyLocalization.ensureInitialized();
 
 
+
+
+
   runApp(EasyLocalization(
       supportedLocales: [Locale('en'), Locale('de')],
       path:
           'assets/translations', // <-- change the path of the translation files
       fallbackLocale: Locale('en'),
-          useOnlyLangCode: true,
-
+      useOnlyLangCode: true,
       child: ChangeNotifierProvider(
         create: (context) => ApplicationState(),
         builder: ((context, child) => const App()),
       )));
-      
-
-
-
 }
 
 class App extends StatelessWidget {
@@ -127,7 +123,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-       localizationsDelegates: context.localizationDelegates,
+      localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       title: 'Firebase Meetup',

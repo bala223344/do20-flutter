@@ -36,8 +36,8 @@ class LangPage extends StatelessWidget {
                     ],
                     onChanged: (String? value) async {
                       if (value != null) {
-                        await context.setLocale(Locale(value));
-                        //await EasyLocalization.of(context)?.setLocale(Locale(value));
+                       // await context.setLocale(Locale(value));
+                        await EasyLocalization.of(context)?.setLocale(Locale(value));
                       }
                     },
                   ),

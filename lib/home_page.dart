@@ -23,6 +23,8 @@ class HomePage extends StatelessWidget {
     
   // context.setLocale(Locale('de'));
 
+
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('example.helloWorld').tr(),

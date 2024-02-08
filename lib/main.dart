@@ -11,6 +11,7 @@ import 'package:provider/provider.dart'; // new
 import 'app_state.dart'; // new
 import 'home_page.dart';
 import 'lang_page.dart';
+import 'bubble_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 
@@ -89,6 +90,11 @@ final _router = GoRouter(
           path: 'lang',
           builder: (BuildContext context, GoRouterState state) =>
               const LangPage(),
+        ),
+        GoRoute(
+          path: 'bubble',
+          builder: (BuildContext context, GoRouterState state) =>
+               BubblePage(),
         ),
       ],
     ),

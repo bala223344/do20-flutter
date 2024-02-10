@@ -64,6 +64,13 @@ class HomePage extends StatelessWidget {
               child: const Text('bubble page'),
             ),
           )
+          ,
+          Center(
+            child: ElevatedButton(
+              onPressed: () => context.go('/report'),
+              child: const Text('report page'),
+            ),
+          )
         ],
       ),
     );

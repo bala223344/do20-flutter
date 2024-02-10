@@ -30,17 +30,17 @@ class ApplicationState extends ChangeNotifier {
 
     ]);
 
-    var db = FirebaseFirestore.instance;
+  //   var db = FirebaseFirestore.instance;
 
-    db.collection("bubbles").get().then(
-    (querySnapshot) {
-      print("Successfully completed");
-      for (var docSnapshot in querySnapshot.docs) {
-        print('${docSnapshot.id} => ${docSnapshot.data()}');
-      }
-    },
-    onError: (e) => print("Error completing: $e"),
-  );
+  //   db.collection("bubbles").get().then(
+  //   (querySnapshot) {
+  //     print("Successfully completed");
+  //     for (var docSnapshot in querySnapshot.docs) {
+  //       print('${docSnapshot.id} => ${docSnapshot.data()}');
+  //     }
+  //   },
+  //   onError: (e) => print("Error completing: $e"),
+  // );
 
 
     FirebaseAuth.instance.userChanges().listen((user) {

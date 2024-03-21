@@ -25,10 +25,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -47,7 +44,7 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyA34XGbZWUWmBWSUwEmR-f7mXAVexP2PeQ',
+    apiKey: 'AIzaSyDTQxfH26XmfavSc9hWcz6iWa0VfgkD2P4',
     appId: '1:531537070392:web:f7ea73432a17826ae3d9cd',
     messagingSenderId: '531537070392',
     projectId: 'do20-flutter-4ed7f',
@@ -57,7 +54,7 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCmP8m4Y-YZRSx0Wci6GiQpwsDOcftO6TQ',
+    apiKey: 'AIzaSyBIejY1ffLTgQT5bv-00wehnSh77aBU0MY',
     appId: '1:531537070392:android:cc84ca44a46ad8abe3d9cd',
     messagingSenderId: '531537070392',
     projectId: 'do20-flutter-4ed7f',
@@ -65,11 +62,20 @@ class DefaultFirebaseOptions {
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyC-jeoKfqdPRV-s74fjhCIE9Avrv9h2v4E',
-    appId: '1:531537070392:ios:1dc1f42ce8a2c31ae3d9cd',
+    apiKey: 'AIzaSyBI9TfPQi4CluVS7oRB1p03GCQ4tfshVAc',
+    appId: '1:531537070392:ios:a60af7d34f543c80e3d9cd',
     messagingSenderId: '531537070392',
     projectId: 'do20-flutter-4ed7f',
     storageBucket: 'do20-flutter-4ed7f.appspot.com',
     iosBundleId: 'com.example.do20Application1',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyBI9TfPQi4CluVS7oRB1p03GCQ4tfshVAc',
+    appId: '1:531537070392:ios:2c2d37a7b58d9455e3d9cd',
+    messagingSenderId: '531537070392',
+    projectId: 'do20-flutter-4ed7f',
+    storageBucket: 'do20-flutter-4ed7f.appspot.com',
+    iosBundleId: 'com.example.do20Application1.RunnerTests',
   );
 }

@@ -38,6 +38,8 @@ class LangPage extends StatelessWidget {
                       if (value != null) {
                        // await context.setLocale(Locale(value));
                         await EasyLocalization.of(context)?.setLocale(Locale(value));
+                        print ("done");
+                        print (value);
                       }
                     },
                   ),

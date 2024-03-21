@@ -70,6 +70,12 @@ class HomePage extends StatelessWidget {
               onPressed: () => context.go('/report'),
               child: const Text('report page'),
             ),
+          ),
+          Center(
+            child: ElevatedButton(
+              onPressed: () => context.go('/profile'),
+              child: const Text('profile'),
+            ),
           )
         ],
       ),

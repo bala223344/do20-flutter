@@ -1,25 +1,50 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DatabaseService {
-  Future<String?> addUser({
-    required String fullName,
-    required String age,
-    required String email,
+  // Future<String?> addUser({
+  //   required String fullName,
+  //   required String age,
+  //   required String email,
+  // }) async {
+  //   try {
+  //     CollectionReference users =
+  //         FirebaseFirestore.instance.collection('users');
+  //     // Call the user's CollectionReference to add a new user
+  //     await users.doc(email).set({
+  //       'full_name': fullName,
+  //       'age': age,fullName
+  //     });
+  //     return 'success';
+  //   } catch (e) {
+  //     return 'Error adding user';
+  //   }
+  // }
+
+  Future<String?> addBubble({
+    required Timestamp startedAt,
   }) async {
+
+      if (FirebaseAuth.instance.currentUser == null) {
+       throw Exception('Must be logged in');
+     }
     try {
-      CollectionReference users =
-          FirebaseFirestore.instance.collection('users');
+      print ("adding bubble");
+      print (FirebaseAuth.instance.currentUser);
+      var data = {  'startedAt': DateTime.now().millisecondsSinceEpoch,
+      'userId': FirebaseAuth.instance.currentUser?.uid} ;
+          FirebaseFirestore.instance.collection('bubbles')
+           .add(data);
+    
       // Call the user's CollectionReference to add a new user
-      await users.doc(email).set({
-        'full_name': fullName,
-        'age': age,
-      });
+     
       return 'success';
     } catch (e) {
-      return 'Error adding user';
+      print (e);
+      print('Error adding user');
     }
   }
-
 
 
   // Future<String?> getUser(String email) async {
@@ -33,7 +58,7 @@ class DatabaseService {
   //     return 'Error fetching user';
   //   }
   // }
-  Future<List?> getAll() async {
+  Future<List?> getAllBubbles() async {
     try {
       CollectionReference bubbles =
           FirebaseFirestore.instance.collection('bubbles');

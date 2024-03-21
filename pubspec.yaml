@@ -26,6 +26,8 @@ dependencies:
   intl: ^0.18.1
   easy_localization: ^3.0.3
   firebase_database: ^10.4.4
+  firebase_crashlytics: ^3.4.15
+  firebase_analytics: ^10.8.6
 
 dev_dependencies:
   flutter_test:

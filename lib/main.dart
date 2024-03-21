@@ -14,7 +14,7 @@ import 'lang_page.dart';
 import 'bubble_page.dart';
 import 'report_page.dart';
 import 'package:easy_localization/easy_localization.dart';
-
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 // Add GoRouter configuration outside the App class
 final _router = GoRouter(
@@ -94,13 +94,11 @@ final _router = GoRouter(
         ),
         GoRoute(
           path: 'bubble',
-          builder: (BuildContext context, GoRouterState state) =>
-               BubblePage(),
+          builder: (BuildContext context, GoRouterState state) => BubblePage(),
         ),
         GoRoute(
           path: 'report',
-          builder: (BuildContext context, GoRouterState state) =>
-               ReportPage(),
+          builder: (BuildContext context, GoRouterState state) => ReportPage(),
         ),
       ],
     ),
@@ -113,9 +111,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
 
-
-
-
+  // Pass all uncaught "fatal" errors from the framework to Crashlytics
+  //FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 
   runApp(EasyLocalization(
       supportedLocales: [Locale('en'), Locale('de')],

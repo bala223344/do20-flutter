@@ -5,10 +5,13 @@ import 'package:flutter/material.dart';           // new
 
 import 'package:easy_localization/easy_localization.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 import 'package:go_router/go_router.dart';
 
 
+import 'package:do20_app/services/bubble_database.dart';
 
 class BubblePage extends StatefulWidget {
   BubblePage({Key? key}) : super(key: key);
@@ -21,7 +24,10 @@ class BubblePage extends StatefulWidget {
  class _BubblePageState extends State<BubblePage> {
       bool _showText = true;
     
-      void _toggleText() {
+      void  _toggleText() async {
+
+        await DatabaseService().addBubble(startedAt: Timestamp.now());
+        print ("saveeed");
         setState(() {
           _showText = !_showText;
         });

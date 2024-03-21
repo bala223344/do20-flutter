@@ -28,7 +28,7 @@ class _ReportPageState extends State<ReportPage> {
   }
 
   void getData() async {
-    allRecs = (await DatabaseService().getAll())!;
+    allRecs = (await DatabaseService().getAllBubbles())!;
     setState(() {});
 
     print('allRecs');

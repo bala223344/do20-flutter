@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DatabaseService {
   // Future<String?> addUser({
@@ -44,6 +43,7 @@ class DatabaseService {
       print (e);
       print('Error adding user');
     }
+    return null;
   }
 
 

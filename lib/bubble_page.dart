@@ -3,18 +3,16 @@
 // found in the LICENSE file.
 import 'package:flutter/material.dart';           // new
 
-import 'package:easy_localization/easy_localization.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 
-import 'package:go_router/go_router.dart';
 
 
 import 'package:do20_app/services/bubble_database.dart';
 
 class BubblePage extends StatefulWidget {
-  BubblePage({Key? key}) : super(key: key);
+  BubblePage({super.key});
     
   @override
   _BubblePageState createState() => _BubblePageState();

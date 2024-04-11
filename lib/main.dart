@@ -12,9 +12,9 @@ import 'app_state.dart'; // new
 import 'home_page.dart';
 import 'lang_page.dart';
 import 'bubble_page.dart';
+import 'testing_page.dart';
 import 'report_page.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 // Add GoRouter configuration outside the App class
 final _router = GoRouter(
@@ -95,6 +95,10 @@ final _router = GoRouter(
         GoRoute(
           path: 'bubble',
           builder: (BuildContext context, GoRouterState state) => BubblePage(),
+        ),
+        GoRoute(
+          path: 'testing',
+          builder: (BuildContext context, GoRouterState state) => TestingPage(),
         ),
         GoRoute(
           path: 'report',

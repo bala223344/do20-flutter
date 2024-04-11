@@ -73,6 +73,12 @@ class HomePage extends StatelessWidget {
           ),
           Center(
             child: ElevatedButton(
+              onPressed: () => context.go('/testing'),
+              child: const Text('testing page'),
+            ),
+          ),
+          Center(
+            child: ElevatedButton(
               onPressed: () => context.go('/profile'),
               child: const Text('profile'),
             ),

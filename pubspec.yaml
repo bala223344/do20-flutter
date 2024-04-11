@@ -28,6 +28,7 @@ dependencies:
   firebase_database: ^10.4.4
   firebase_crashlytics: ^3.4.15
   firebase_analytics: ^10.8.6
+  wave: ^0.2.2
 
 dev_dependencies:
   flutter_test:

@@ -3,14 +3,12 @@
 // found in the LICENSE file.
 import 'package:flutter/material.dart'; // new
 
-import 'package:easy_localization/easy_localization.dart';
 
-import 'package:go_router/go_router.dart';
 
 import 'package:do20_app/services/bubble_database.dart';
 
 class ReportPage extends StatefulWidget {
-  ReportPage({Key? key}) : super(key: key);
+  ReportPage({super.key});
 
   @override
   _ReportPageState createState() => _ReportPageState();

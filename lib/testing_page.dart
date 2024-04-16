@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
+import 'utils/water_drop.dart';
 
 final String appName = 'Demo WAVE';
 final String repoURL = 'https://github.com/glorylab/wave';
@@ -14,7 +15,7 @@ class TestingPage extends StatefulWidget {
 }
 
 class _TestingPage extends State<TestingPage> {
-  double _wav1 = 0.8;
+  double _wav1 = 0.9;
   double _wav2 = 0.85;
 
   _buildCard({
@@ -48,8 +49,8 @@ class _TestingPage extends State<TestingPage> {
 
   void _toggleText() {
     setState(() {
-      _wav1 += 0.1;
-      _wav2 += 0.1;
+      _wav1 -= 0.1;
+      _wav2 -= 0.1;
     });
   }
 
@@ -132,25 +133,31 @@ class _TestingPage extends State<TestingPage> {
                         offset: Offset(0.0, 8.0),
                       ),
                     ]),
-                    child: ClipOval(
-                      child: WaveWidget(
-                        config: CustomConfig(
-                          colors: [
-                            Color(0xFFFEE440),
-                            Color(0xFF00BBF9),
-                          ],
-                          durations: [
-                            5000,
-                            1000,
-                          ],
-                          heightPercentages: [
-                            _wav1,
-                            _wav2,
-                          ],
+                    child: WaterDrop(
+                      params: [
+                        WaterDropParam(
+                            top: 0, height: 128, left: 0, width: 128),
+                      ],
+                      child: ClipOval(
+                        child: WaveWidget(
+                          config: CustomConfig(
+                            colors: [
+                              Color(0xFFFEE440),
+                              Color(0xFF00BBF9),
+                            ],
+                            durations: [
+                              5000,
+                              1000,
+                            ],
+                            heightPercentages: [
+                              _wav1,
+                              _wav2,
+                            ],
+                          ),
+                          backgroundColor: Color(0xFFF15BB5),
+                          size: Size(double.infinity, double.infinity),
+                          waveAmplitude: 0,
                         ),
-                        backgroundColor: Color(0xFFF15BB5),
-                        size: Size(double.infinity, double.infinity),
-                        waveAmplitude: 0,
                       ),
                     ),
                   ),

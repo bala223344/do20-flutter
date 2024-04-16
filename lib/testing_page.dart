@@ -70,8 +70,11 @@ class _TestingPage extends State<TestingPage> {
         children: [
           Expanded(
             child: ListView(
+
               children: <Widget>[
+                
                 SizedBox(height: 16.0),
+                
                 _buildCard(
                   backgroundColor: Colors.purpleAccent,
                   config: CustomConfig(
@@ -121,6 +124,7 @@ class _TestingPage extends State<TestingPage> {
                     ),
                     backgroundColor: Colors.blue[600]),
                 Align(
+                  
                   child: Container(
                     height: 128,
                     width: 128,
@@ -133,34 +137,31 @@ class _TestingPage extends State<TestingPage> {
                         offset: Offset(0.0, 8.0),
                       ),
                     ]),
-                    child: WaterDrop(
-                      params: [
-                        WaterDropParam(
-                            top: 0, height: 128, left: 0, width: 128),
-                      ],
+                   
                       child: ClipOval(
                         child: WaveWidget(
                           config: CustomConfig(
                             colors: [
-                              Color(0xFFFEE440),
-                              Color(0xFF00BBF9),
+                              Color.fromARGB(255, 140, 189, 211),
+                              Color.fromARGB(255, 18, 38, 57),
+                              
                             ],
                             durations: [
                               5000,
-                              1000,
+                              4000,
                             ],
                             heightPercentages: [
                               _wav1,
                               _wav2,
                             ],
                           ),
-                          backgroundColor: Color(0xFFF15BB5),
+                          backgroundColor: Color.fromARGB(255, 255, 151, 6),
                           size: Size(double.infinity, double.infinity),
                           waveAmplitude: 0,
                         ),
                       ),
                     ),
-                  ),
+                  
                 ),
                 const SizedBox(
                   height: 88,

@@ -117,7 +117,7 @@ class __WaterDropState extends State<_WaterDrop> {
         gradient: LinearGradient(
           begin: alignment - alignmentModifier,
           end: alignment + alignmentModifier,
-          colors: [Colors.black, Colors.white],
+          colors: [Color.fromARGB(255, 230, 18, 18), Color.fromARGB(255, 37, 26, 14)],
         ),
         backgroundBlendMode: BlendMode.overlay,
       ),
@@ -250,9 +250,9 @@ class _OvalShadow extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              blurRadius: 4,
-              offset: Offset(4, 4),
-              color: Colors.black.withOpacity(0.5),
+              blurRadius: 8,
+              offset: Offset(1, 1),
+              color: Color.fromARGB(255, 0, 0, 0).withOpacity(0.5),
             ),
           ],
         ),

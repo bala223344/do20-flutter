@@ -1,7 +1,6 @@
 {
-    "example": {
+    "main": {
       "hello": "Hello",
-      "world": "World!",
-      "helloWorld": "@:example.hello @:example.world"
+      "world": "World!"
     }
   }

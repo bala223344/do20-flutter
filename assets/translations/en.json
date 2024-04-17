@@ -1,7 +1,9 @@
 {
-    "example": {
+    "main": {
       "hello": "Hello",
       "world": "World!",
-      "helloWorld": "@:example.hello @:example.world"
+      "helloWorld": "@:main.hello @:main.world",
+      "start_20_minutes_bubble":"start 20 min bubbleeee!"
+
     }
   }

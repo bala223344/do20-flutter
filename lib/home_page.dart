@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('example.helloWorld').tr(),
+        title: const Text('main.helloWorld').tr(),
       ),
       body: ListView(
         children: <Widget>[

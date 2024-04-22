@@ -15,6 +15,7 @@ import 'src/authentication.dart'; // new
 import 'package:easy_localization/easy_localization.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:do20_app/services/user_pref.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -22,6 +23,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // context.setLocale(Locale('de'));
+    print("everytime comes here??");
+    //final FirebaseAuth auth = FirebaseAuth.instance;
+   // final User? user = auth.currentUser;
+  //  print(user);
+    UserPreferenceService().setInitialPref();
 
     return Scaffold(
       appBar: AppBar(
@@ -56,15 +62,13 @@ class HomePage extends StatelessWidget {
               onPressed: () => context.go('/lang'),
               child: const Text('lang'),
             ),
-          )
-          ,
+          ),
           Center(
             child: ElevatedButton(
               onPressed: () => context.go('/bubble'),
               child: const Text('bubble page'),
             ),
-          )
-          ,
+          ),
           Center(
             child: ElevatedButton(
               onPressed: () => context.go('/report'),

@@ -15,6 +15,9 @@ import 'bubble_page.dart';
 import 'testing_page.dart';
 import 'report_page.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+import 'firebase_options.dart';
 
 // Add GoRouter configuration outside the App class
 final _router = GoRouter(
@@ -38,6 +41,7 @@ final _router = GoRouter(
                   context.push(uri.toString());
                 })),
                 AuthStateChangeAction(((context, state) {
+                
                   final user = switch (state) {
                     SignedIn state => state.user,
                     UserCreated state => state.credential.user,
@@ -46,6 +50,8 @@ final _router = GoRouter(
                   if (user == null) {
                     return;
                   }
+
+
                   if (state is UserCreated) {
                     user.updateDisplayName(user.email!.split('@')[0]);
                   }
@@ -114,6 +120,8 @@ final _router = GoRouter(
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+   await Firebase.initializeApp(
+        options: DefaultFirebaseOptions.currentPlatform);
 
   // Pass all uncaught "fatal" errors from the framework to Crashlytics
   //FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;

@@ -13,6 +13,7 @@ import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 import 'utils/water_drop.dart';
 
+
 class BubblePage extends StatefulWidget {
   BubblePage({super.key});
 
@@ -22,7 +23,7 @@ class BubblePage extends StatefulWidget {
 
 class _BubblePageState extends State<BubblePage> {
   bool _showText = true;
-
+  bool _fetchedAlready = false;
   double _wav1 = 0.9;
   double _wav2 = 0.85;
   void _toggleText() async {
@@ -37,25 +38,29 @@ class _BubblePageState extends State<BubblePage> {
   int _start = 10;
 
   void startTimer() {
+    _fetchedAlready = true;
     const oneSec = Duration(seconds: 1);
     _timer = Timer.periodic(
       oneSec,
       (Timer timer) {
         if (_start == 0) {
-          setState(() {
-            timer.cancel();
-          });
+          if (mounted) {
+            setState(() {
+              timer.cancel();
+            });
+          }
         } else {
-          setState(() {
-            _start--;
-          });
+          if (mounted) {
+            setState(() {
+              _start--;
+            });
+          }
         }
       },
     );
   }
 
   void showDialog() {
-
     showGeneralDialog(
         context: context,
         barrierDismissible: true,
@@ -76,7 +81,8 @@ class _BubblePageState extends State<BubblePage> {
                   Center(
                       child: Container(
                           child: Text(
-                          'reminder to put device on silent! ',
+                    'reminder to put device on silent! Once started Do not go away from bubble screen or your bubble will burst. you are allowed to lock your phone :) . It will be autosaved',
+                    style: TextStyle(height: 2, fontSize: 12),
                     // style: TextStyle(color: const Color.fromARGB(255, 14, 0, 0)),
                   ))),
                   ElevatedButton(
@@ -84,7 +90,14 @@ class _BubblePageState extends State<BubblePage> {
                       Navigator.of(context).pop();
                     },
                     child: Text(
-                      "Save",
+                      "close",
+                      // style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: startTimer,
+                    child: Text(
+                      "Start",
                       // style: TextStyle(color: Colors.white),
                     ),
                   )
@@ -106,6 +119,12 @@ class _BubblePageState extends State<BubblePage> {
             child: ListView(children: <Widget>[
           SizedBox(height: 26.0),
           Center(child: Text('You have pressed the button $_start  times.')),
+          Center(
+              child: Container(
+                  child: Text(
+            'fetched already? $_fetchedAlready',
+            // style: TextStyle(color: const Color.fromARGB(255, 14, 0, 0)),
+          ))),
           Align(
             child: Container(
               height: 128,

@@ -18,8 +18,7 @@ class ApplicationState extends ChangeNotifier {
   bool get loggedIn => _loggedIn;
 
   Future<void> init() async {
-    await Firebase.initializeApp(
-        options: DefaultFirebaseOptions.currentPlatform);
+
 
     FirebaseUIAuth.configureProviders([
       EmailAuthProvider(),

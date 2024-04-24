@@ -41,4 +41,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/codelab.png
+    - assets/image1.png
     - assets/translations/

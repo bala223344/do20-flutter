@@ -5,5 +5,9 @@
       "helloWorld": "@:main.hello @:main.world",
       "start_20_minutes_bubble":"start 20 min bubbleeee!"
 
+    },
+
+    "onboading": {
+      "title1": "stop sppoining"
     }
   }

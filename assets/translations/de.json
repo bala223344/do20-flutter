@@ -4,5 +4,17 @@
       "world": "Welt!",
       "helloWorld": "@:main.hello @:main.world",
       "start_20_minutes_bubble":"20 min weltzDE!"
+    },
+    "onboading": {
+      "title1": "STOP SPOILING THE DAY",
+      "desc1" : "The world is full of distractions that have nothing to do with your life goals.",
+      "title2": "DO VERY LITTLE TO MARK THE DAY PRODUCTIVE",
+      "desc2" : "Working on your goal just 20 minutes of a day uninterrupted would make day wonderful.",
+      "title3": "STOP RUINING THE DAY",
+      "desc3" : "The world is full of distractions that have nothing to do with your life.",
+      "title4": "STOP RUINING THE DAY",
+      "desc4" : "The world is full of distractions that have nothing to do with your life."
+
     }
+
   }

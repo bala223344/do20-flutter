@@ -13,18 +13,51 @@ import 'home_page.dart';
 import 'lang_page.dart';
 import 'bubble_page.dart';
 import 'testing_page.dart';
+import 'onboarding_page.dart';
 import 'report_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'firebase_options.dart';
 
+
+
 // Add GoRouter configuration outside the App class
 final _router = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (context, state) => const HomePage(),
+      //builder: (context, state) => const HomePage(),
+       builder: (context, state) =>  OnboardingPage(
+         pages: [
+          OnboardingPageModel(
+            title: ('onboading.title1').tr(),
+            description:
+                ('onboading.desc1').tr(),
+            image: 'assets/image1.png',
+            bgColor: Colors.indigo,
+          ),
+          OnboardingPageModel(
+            title: 'Connect with your friends.',
+            description: 'Connect with your friends anytime anywhere.',
+            image: 'assets/image1.png',
+            bgColor: const Color(0xff1eb090),
+          ),
+          OnboardingPageModel(
+            title: 'Bookmark your favourites',
+            description:
+                'Bookmark your favourite quotes to read at a leisure time.',
+            image: 'assets/image1.png',
+            bgColor: const Color(0xfffeae4f),
+          ),
+          OnboardingPageModel(
+            title: 'Follow creators',
+            description: 'Follow your favourite creators to stay in the loop.',
+            image: 'assets/image1.png',
+            bgColor: Colors.purple,
+          ),
+        ],
+       ),
       routes: [
         GoRoute(
           path: 'sign-in',

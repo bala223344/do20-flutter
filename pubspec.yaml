@@ -30,6 +30,7 @@ dependencies:
   firebase_analytics: ^10.8.6
   wave: ^0.2.2
   shared_preferences: ^2.2.3
+  flutter_svg: ^2.0.10+1
 
 dev_dependencies:
   flutter_test:
@@ -40,7 +41,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/codelab.png
-    - assets/image1.png
-    - assets/logo/do20-colored.png
-    - assets/translations/
+    - assets/images/
+    

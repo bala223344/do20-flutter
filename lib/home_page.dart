@@ -16,6 +16,8 @@ import 'package:easy_localization/easy_localization.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:do20_app/services/user_pref.dart';
+import 'utils/thermo.dart';
+import 'utils/square.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -25,8 +27,8 @@ class HomePage extends StatelessWidget {
     // context.setLocale(Locale('de'));
     print("everytime comes here??");
     //final FirebaseAuth auth = FirebaseAuth.instance;
-   // final User? user = auth.currentUser;
-  //  print(user);
+    // final User? user = auth.currentUser;
+    //  print(user);
     UserPreferenceService().setInitialPref();
 
     return Scaffold(
@@ -35,10 +37,28 @@ class HomePage extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
-          Image.asset('assets/codelab.png'),
-          const SizedBox(height: 8),
-          const IconAndDetail(Icons.calendar_today, 'October 30'),
-          const IconAndDetail(Icons.location_city, 'San Francisco'),
+          TwoRowTwoColumnLayout(),
+          HorizontalThermometer(
+            imagePath: 'assets/image1.png',
+            text: 'Temperature',
+          ),
+          HorizontalThermometer(
+            imagePath: 'assets/image1.png',
+            text: 'Temperature',
+          ),
+          HorizontalThermometer(
+            imagePath: 'assets/image1.png',
+            text: 'Temperature',
+          ),
+          HorizontalThermometer(
+            imagePath: 'assets/image1.png',
+            text: 'Temperature',
+          ),
+          
+          // Image.asset('assets/codelab.png'),
+          // const SizedBox(height: 8),
+          // const IconAndDetail(Icons.calendar_today, 'October 30'),
+          // const IconAndDetail(Icons.location_city, 'San Francisco'),
           Consumer<ApplicationState>(
             builder: (context, appState, _) => AuthFunc(
                 loggedIn: appState.loggedIn,
@@ -78,7 +98,10 @@ class HomePage extends StatelessWidget {
           Center(
             child: ElevatedButton(
               onPressed: () => context.go('/testing'),
-              child: const Text('testing page'),
+              child: HorizontalThermometer(
+            imagePath: 'assets/image1.png',
+            text: 'Temperature',
+          ),
             ),
           ),
           Center(

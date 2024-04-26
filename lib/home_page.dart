@@ -39,19 +39,19 @@ class HomePage extends StatelessWidget {
         children: <Widget>[
           TwoRowTwoColumnLayout(),
           HorizontalThermometer(
-            imagePath: 'assets/image1.png',
+            imagePath: 'assets/images/image1.png',
             text: 'Temperature',
           ),
           HorizontalThermometer(
-            imagePath: 'assets/image1.png',
+            imagePath: 'assets/images/image1.png',
             text: 'Temperature',
           ),
           HorizontalThermometer(
-            imagePath: 'assets/image1.png',
+            imagePath: 'assets/images/image1.png',
             text: 'Temperature',
           ),
           HorizontalThermometer(
-            imagePath: 'assets/image1.png',
+            imagePath: 'assets/images/image1.png',
             text: 'Temperature',
           ),
           
@@ -99,7 +99,7 @@ class HomePage extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () => context.go('/testing'),
               child: HorizontalThermometer(
-            imagePath: 'assets/image1.png',
+            imagePath: 'assets/images/image1.png',
             text: 'Temperature',
           ),
             ),

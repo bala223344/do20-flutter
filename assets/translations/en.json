@@ -3,8 +3,9 @@
       "hello": "Hello",
       "world": "World!",
       "helloWorld": "@:main.hello @:main.world",
-      "start_20_minutes_bubble":"start 20 min bubbleeee!"
-
+      "start_20_minutes_bubble":"start 20 min bubbleeee!",
+      "finish" : "Finish",
+      "next" : "Nextd"
     },
 
     "onboading": {

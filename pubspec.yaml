@@ -42,4 +42,5 @@ flutter:
   assets:
     - assets/codelab.png
     - assets/image1.png
+    - assets/logo/do20-colored.png
     - assets/translations/

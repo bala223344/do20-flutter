@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class OnboardingPageModel {
   final String title;
@@ -76,12 +77,12 @@ class _OnboardingPageState extends State<OnboardingPage> {
                                         ?.copyWith(
                                           fontWeight: FontWeight.bold,
                                           color: _item.textColor,
-                                        )),
+                                        ), textAlign: TextAlign.center,),
                               ),
                               Container(
-                                constraints: BoxConstraints(maxWidth: 280),
+                                constraints: BoxConstraints(maxWidth: double.infinity),
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 24.0, vertical: 8.0),
+                                    horizontal: 16.0, vertical: 8.0),
                                 child: Text(_item.description,
                                     textAlign: TextAlign.center,
                                     style: Theme.of(context)
@@ -128,7 +129,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             print("okdkupr");
                         },
                         child: Text(
-                          "Skip",
+                          "",
                           style: TextStyle(color: Colors.white),
                         )),
                     TextButton(
@@ -143,8 +144,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       },
                       child: Text(
                         _currentPage == widget.pages.length - 1
-                            ? "Finish"
-                            : "Next",
+                            ? tr("main.finish")
+                            : tr("main.next"),
                         style: TextStyle(color: Colors.white),
                       ),
                     ),

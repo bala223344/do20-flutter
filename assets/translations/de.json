@@ -5,7 +5,8 @@
       "helloWorld": "@:main.hello @:main.world",
       "start_20_minutes_bubble":"20 min weltzDE!",
       "finish" : "Finish",
-      "next" : "Next"
+      "next" : "Next",
+      "start_bubble" : "Start a Bubble"
     },
     "onboading": {
       "title1": "STOP SPOILING THE DAY",

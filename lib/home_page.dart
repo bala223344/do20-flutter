@@ -25,38 +25,37 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // context.setLocale(Locale('de'));
-    print("everytime comes here??");
     //final FirebaseAuth auth = FirebaseAuth.instance;
     // final User? user = auth.currentUser;
     //  print(user);
     UserPreferenceService().setInitialPref();
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('main.helloWorld').tr(),
-      ),
       body: ListView(
         children: <Widget>[
+          Row(
+            mainAxisAlignment:
+                MainAxisAlignment.center, // Center the logo horizontally
+            children: [
+              Image.asset(
+                'assets/images/logo/do20-black-bg.png',
+                width: 150,
+              ), // Replace with your logo path
+            ],
+          ),
+          Center(
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor:
+                    Colors.transparent, // Make background transparent
+                shadowColor: Colors.transparent, // Remove button shadow
+              ),
+              onPressed: () => context.go('/testing'),
+              child: HorizontalThermometer(),
+            ),
+          ),
           TwoRowTwoColumnLayout(),
-          HorizontalThermometer(
-            imagePath: 'assets/images/image1.png',
-            text: 'Temperature',
-          ),
-          HorizontalThermometer(
-            imagePath: 'assets/images/image1.png',
-            text: 'Temperature',
-          ),
-          HorizontalThermometer(
-            imagePath: 'assets/images/image1.png',
-            text: 'Temperature',
-          ),
-          HorizontalThermometer(
-            imagePath: 'assets/images/image1.png',
-            text: 'Temperature',
-          ),
-          
-          // Image.asset('assets/codelab.png'),
-          // const SizedBox(height: 8),
+
           // const IconAndDetail(Icons.calendar_today, 'October 30'),
           // const IconAndDetail(Icons.location_city, 'San Francisco'),
           Consumer<ApplicationState>(
@@ -95,15 +94,7 @@ class HomePage extends StatelessWidget {
               child: const Text('report page'),
             ),
           ),
-          Center(
-            child: ElevatedButton(
-              onPressed: () => context.go('/testing'),
-              child: HorizontalThermometer(
-            imagePath: 'assets/images/image1.png',
-            text: 'Temperature',
-          ),
-            ),
-          ),
+
           Center(
             child: ElevatedButton(
               onPressed: () => context.go('/profile'),

@@ -1,3 +1,4 @@
+import 'package:do20_app/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 
@@ -70,17 +71,21 @@ class _OnboardingPageState extends State<OnboardingPage> {
                             child: Column(children: [
                               Padding(
                                 padding: const EdgeInsets.all(16.0),
-                                child: Text(_item.title,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .titleLarge
-                                        ?.copyWith(
-                                          fontWeight: FontWeight.bold,
-                                          color: _item.textColor,
-                                        ), textAlign: TextAlign.center,),
+                                child: Text(
+                                  _item.title,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge
+                                      ?.copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        color: _item.textColor,
+                                      ),
+                                  textAlign: TextAlign.center,
+                                ),
                               ),
                               Container(
-                                constraints: BoxConstraints(maxWidth: double.infinity),
+                                constraints:
+                                    BoxConstraints(maxWidth: double.infinity),
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 16.0, vertical: 8.0),
                                 child: Text(_item.description,
@@ -126,7 +131,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     TextButton(
                         onPressed: () {
                           // Handle Skipping onboarding page
-                            print("okdkupr");
+                          print("okdkupr");
                         },
                         child: Text(
                           "",
@@ -136,6 +141,11 @@ class _OnboardingPageState extends State<OnboardingPage> {
                       onPressed: () {
                         if (_currentPage == widget.pages.length - 1) {
                           // This is the last page
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const HomePage()),
+                          );
                         } else {
                           _pageController.animateToPage(_currentPage + 1,
                               curve: Curves.easeInOutCubic,

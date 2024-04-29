@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class HorizontalThermometer extends StatelessWidget {
-  final String imagePath;
-  final String text;
 
   const HorizontalThermometer({
     super.key,
-    required this.imagePath,
-    required this.text,
   });
 
   @override
@@ -22,26 +19,26 @@ class HorizontalThermometer extends StatelessWidget {
           Positioned(
             // Position the ClipRRect on top of the image
             top: 45, // Adjust based on ClipRRect height
-            left: 40.0, // Align to the left edge of the image
-            width:300,
+            left: 10.0, // Align to the left edge of the image
+            width:200,
             child:
           ClipRRect(
               borderRadius: BorderRadius.circular(90.0),
               child: Container(
                 alignment: Alignment.center,
                 constraints: const BoxConstraints(
-                  maxWidth: 300,
+                  maxWidth: 150,
                   maxHeight: 50,
                 ),
-                color: Colors.green,
-                child: const Text('ClipRRect',
-                    style: TextStyle(color: Colors.white)),
+                color: Colors.amber,
+                child: const Text('main.start_bubble',
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16 ,  color: Color.fromARGB(255, 32, 35, 43))).tr(),
               ),
             )
             )
             ,
              Image.asset(
-            imagePath,
+            'assets/images/image1.png',
             height: 110,
           ),
           const SizedBox(width: 5.0), // Spacing between text and end

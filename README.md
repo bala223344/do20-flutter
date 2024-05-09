@@ -1,16 +1,12 @@
-# do20_application_1
+color code
+#edca1d - yellow
+#c61414 - red 
 
-A new Flutter project.
+--
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#a81ded - voilet (255, 170, 221, 237)
+#14c614 - green(255, 198, 20, 20)
+##1858d9 -blue (24, 88, 217, 217)
+##a618ed - voilet2 (166, 24, 237, 237)
+#1ded1d - green2 (255, 222, 29, 29)
+##d96818 - orange (217, 104, 24, 24)

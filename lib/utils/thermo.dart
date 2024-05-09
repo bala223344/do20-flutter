@@ -1,49 +1,65 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/animation.dart';
 
-class HorizontalThermometer extends StatelessWidget {
+class HorizontalThermometer extends StatefulWidget {
+  @override
+  _HorizontalThermometerState createState() => _HorizontalThermometerState();
+}
 
-  const HorizontalThermometer({
-    super.key,
-  });
+class _HorizontalThermometerState extends State<HorizontalThermometer>
+    with TickerProviderStateMixin {
+  late AnimationController _animationController;
+  double _translationY = 0.0; // Vertical translation for animation
+
+  @override
+  void initState() {
+    super.initState();
+    _animationController = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 2), // Adjust animation duration
+    )..repeat(reverse: true); // Continuously animate
+
+    _animationController.addListener(() {
+      setState(() {
+        _translationY =
+            20.0 * _animationController.value; // Adjust movement range
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        Expanded( // Use Expanded to fill available space
-      flex: 2, // Adjust flex ratio as nee
-       child: Stack(// Use Stack for overlapping widgets
-            children: [
-         
-          Positioned(
-            // Position the ClipRRect on top of the image
-            top: 45, // Adjust based on ClipRRect height
-            left: 10.0, // Align to the left edge of the image
-            width:200,
-            child:
-          ClipRRect(
-              borderRadius: BorderRadius.circular(90.0),
-              child: Container(
-                alignment: Alignment.center,
-                constraints: const BoxConstraints(
-                  maxWidth: 150,
-                  maxHeight: 50,
-                ),
-                color: Colors.amber,
-                child: const Text('main.start_bubble',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16 ,  color: Color.fromARGB(255, 32, 35, 43))).tr(),
-              ),
-            )
-            )
-            ,
-             Image.asset(
-            'assets/images/image1.png',
-            height: 110,
-          ),
-          const SizedBox(width: 5.0), // Spacing between text and end
-        ])
-        )
+
+        Text('main.start_bubble',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Color(0xFF14c614)))
+            .tr(),
+      
+             Transform.translate(
+                offset: Offset(0.0, _translationY),
+                child: Image.asset(
+                  'assets/images/image1.png',
+                  height: 110,
+                )),
+
+        Text('main.start_bubble',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                    color: Color(0xFF14c614)))
+            .tr(),
+        
       ],
     );
   }

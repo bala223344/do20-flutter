@@ -18,6 +18,8 @@ import 'package:go_router/go_router.dart';
 import 'package:do20_app/services/user_pref.dart';
 import 'utils/thermo.dart';
 import 'utils/square.dart';
+import 'what_is_do20_about.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -30,9 +32,11 @@ class HomePage extends StatelessWidget {
     //  print(user);
     UserPreferenceService().setInitialPref();
 
-    return Scaffold(
+    return SafeArea(child:
+      Scaffold(
       body: ListView(
         children: <Widget>[
+          SizedBox(height: 20.0), // Adjust width as needed
           Row(
             mainAxisAlignment:
                 MainAxisAlignment.center, // Center the logo horizontally
@@ -43,16 +47,41 @@ class HomePage extends StatelessWidget {
               ), // Replace with your logo path
             ],
           ),
+          SizedBox(height: 20.0), // Adjust width as needed
+
           Center(
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor:
-                    Colors.transparent, // Make background transparent
-                shadowColor: Colors.transparent, // Remove button shadow
+                    Colors.blueAccent, // Make background transparent
+                shadowColor: Color.fromARGB(0, 32, 35, 43), // Remove button shadow
               ),
               onPressed: () => context.go('/testing'),
               child: HorizontalThermometer(),
             ),
+          ),
+          Center(
+              child: InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => WhatIsdo20()),
+              );
+            },
+            splashColor: Colors.lightBlueAccent,
+            child: Text(
+              'Tap to go to Second Widget',
+              style: TextStyle(
+                shadows: [Shadow(color: Colors.red, offset: Offset(0, -5))],
+                color: Colors.transparent,
+                decoration: TextDecoration.underline,
+                decorationColor: Colors.blue,
+                decorationThickness: 2,
+                decorationStyle: TextDecorationStyle.solid,
+              ),
+            ), // Set your desired ripple color
+          )
           ),
           TwoRowTwoColumnLayout(),
 
@@ -85,7 +114,7 @@ class HomePage extends StatelessWidget {
           Center(
             child: ElevatedButton(
               onPressed: () => context.go('/bubble'),
-              child: const Text('bubble page'),
+              child: const Text('bubble pagei'),
             ),
           ),
           Center(
@@ -103,6 +132,9 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-    );
+    
+      )
+      )
+    ;
   }
 }

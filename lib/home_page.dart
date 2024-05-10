@@ -18,8 +18,7 @@ import 'package:go_router/go_router.dart';
 import 'package:do20_app/services/user_pref.dart';
 import 'utils/thermo.dart';
 import 'utils/square.dart';
-import 'what_is_do20_about.dart';
-
+import 'what_is_do20_about_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -32,8 +31,8 @@ class HomePage extends StatelessWidget {
     //  print(user);
     UserPreferenceService().setInitialPref();
 
-    return SafeArea(child:
-      Scaffold(
+    return SafeArea(
+        child: Scaffold(
       body: ListView(
         children: <Widget>[
           SizedBox(height: 20.0), // Adjust width as needed
@@ -50,28 +49,27 @@ class HomePage extends StatelessWidget {
           SizedBox(height: 20.0), // Adjust width as needed
 
           Center(
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor:
-                    Colors.blueAccent, // Make background transparent
-                shadowColor: Color.fromARGB(0, 32, 35, 43), // Remove button shadow
-              ),
-              onPressed: () => context.go('/testing'),
-              child: HorizontalThermometer(),
-            ),
-          ),
+              child: InkWell(
+            onTap: () {
+              context.go('/whatis');
+            },
+            splashColor: Colors.transparent,
+            child: HorizontalThermometer(), // Set your desired ripple color
+          )),
+            SizedBox(height: 20.0), // Adjust width as needed
           Center(
               child: InkWell(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => WhatIsdo20()),
-              );
+              context.go('/whatis');
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //       builder: (context) => WhatIsdo20()),
+              // );
             },
             splashColor: Colors.lightBlueAccent,
             child: Text(
-              'Tap to go to Second Widget',
+              'What is do20?',
               style: TextStyle(
                 shadows: [Shadow(color: Colors.red, offset: Offset(0, -5))],
                 color: Colors.transparent,
@@ -81,8 +79,7 @@ class HomePage extends StatelessWidget {
                 decorationStyle: TextDecorationStyle.solid,
               ),
             ), // Set your desired ripple color
-          )
-          ),
+          )),
           TwoRowTwoColumnLayout(),
 
           // const IconAndDetail(Icons.calendar_today, 'October 30'),
@@ -132,9 +129,6 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-    
-      )
-      )
-    ;
+    ));
   }
 }

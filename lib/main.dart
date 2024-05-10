@@ -14,6 +14,9 @@ import 'bubble_page.dart';
 import 'testing_page.dart';
 import 'report_page.dart';
 import 'decider_page.dart';
+import 'what_is_do20_about_page.dart';
+import 'tips_page.dart';
+import 'rules_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -140,6 +143,21 @@ class App extends StatelessWidget {
               builder: (BuildContext context, GoRouterState state) =>
                   ReportPage(),
             ),
+            GoRoute(
+              path: 'whatis',
+              builder: (BuildContext context, GoRouterState state) =>
+                  WhatIsdo20Page(),
+            ),
+            GoRoute(
+              path: 'rules',
+              builder: (BuildContext context, GoRouterState state) =>
+                  RulesPage(),
+            ),
+            GoRoute(
+              path: 'tips',
+              builder: (BuildContext context, GoRouterState state) =>
+                  TipsPage(),
+            ),
           ],
         ),
       ],
@@ -156,11 +174,13 @@ class App extends StatelessWidget {
         buttonTheme: Theme.of(context).buttonTheme.copyWith(
               highlightColor: Colors.deepPurple,
             ),
-        textTheme: GoogleFonts.robotoTextTheme(
-          Theme.of(context).textTheme,
-        ),
+        // textTheme: GoogleFonts.robotoTextTheme(
+        //   Theme.of(context).textTheme,
+        // ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
         useMaterial3: true, colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple).copyWith(background: Color.fromARGB(0, 32, 35, 43)),
+         fontFamily: 'Mulish'
+
       ),
 
       routerConfig: router, // new

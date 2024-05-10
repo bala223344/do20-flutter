@@ -6,7 +6,9 @@
       "start_20_minutes_bubble":"20 min weltzDE!",
       "finish" : "Finish",
       "next" : "Next",
-      "start_bubble" : "Start a Bubble"
+      "start_bubble1" : "",
+      "start_bubble2" : "Start a  Bubble",
+      "what_is_do20" : "What is Do20?"
     },
     "onboading": {
       "title1": "STOP SPOILING THE DAY",

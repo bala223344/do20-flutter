@@ -39,12 +39,6 @@ class _HorizontalThermometerState extends State<HorizontalThermometer>
     return Column(
       children: [
 
-        Text('main.start_bubble',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                    color: Color(0xFF14c614)))
-            .tr(),
       
              Transform.translate(
                 offset: Offset(0.0, _translationY),
@@ -53,10 +47,8 @@ class _HorizontalThermometerState extends State<HorizontalThermometer>
                   height: 110,
                 )),
 
-        Text('main.start_bubble',
+        Text('main.start_bubble2',
                 style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
                     color: Color(0xFF14c614)))
             .tr(),
         

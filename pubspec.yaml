@@ -31,6 +31,7 @@ dependencies:
   wave: ^0.2.2
   shared_preferences: ^2.2.3
   flutter_svg: ^2.0.10+1
+  accordion: ^2.6.0
 
 dev_dependencies:
   flutter_test:
@@ -44,4 +45,10 @@ flutter:
     - assets/translations/
     - assets/images/
     - assets/images/logo/
-    
+  fonts:
+      - family: Mulish
+        fonts:
+          - asset: fonts/Mulish-Regular.ttf
+      - family: Macondo
+        fonts:
+          - asset: fonts/Macondo-Regular.ttf

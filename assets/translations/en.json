@@ -1,14 +1,26 @@
 {
-    "main": {
-      "hello": "Hello",
-      "world": "World!",
-      "helloWorld": "@:main.hello @:main.world",
-      "start_20_minutes_bubble":"start 20 min bubbleeee!",
-      "finish" : "Finish",
-      "next" : "Nextd"
-    },
+  "main": {
+    "hello": "Hallo ",
+    "world": "Welt!",
+    "helloWorld": "@:main.hello @:main.world",
+    "start_20_minutes_bubble":"20 min weltzDE!",
+    "finish" : "Finish",
+    "next" : "Next",
+    "start_bubble1" : "",
+    "start_bubble2" : "Start a  Bubble",
+    "what_is_do20" : "What is Do20"
+  },
+  "onboading": {
+    "title1": "STOP SPOILING THE DAY",
+    "desc1" : "The world is full of distractions that have nothing to do with your life goals.",
+    "title2": "EVEN A LITTLE WORK CAN MAKE THE DAY PRODUCTIVE",
+    "desc2" : "Working on your goal just 20 minutes of a day uninterrupted would make the day wonderful.",
+    "title3": "IS THIS A LIFE-CHANGING APP?",
+    "desc3" : "Who knows! We will try to make you accomplish a one small thing on a day and make you feel less guilty for not spending the day wisely.",
+    "title4": "20 MINS A DAY! IS ALL IT ASK FOR!",
+    "desc4" : "Little. But Heavy. A person focusing on a thing for 20 minutes without getting distracted is considered an achiever in modern world. Pat yourself to become one."
 
-    "onboading": {
-      "title1": "stop sppoining"
-    }
   }
+
+}
+  

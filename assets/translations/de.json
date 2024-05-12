@@ -8,7 +8,10 @@
       "next" : "Next",
       "start_bubble1" : "",
       "start_bubble2" : "Start a  Bubble",
-      "what_is_do20" : "What is Do20?"
+      "what_is_do20" : "What is Do20?",
+      "rules_and_info" : "Rules and Info",
+      "what_are_the_rules" : "What are the Rules?",
+      "some_awesome_tips" : "Some awesome Tips?"
     },
     "onboading": {
       "title1": "STOP SPOILING THE DAY",

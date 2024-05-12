@@ -51,7 +51,7 @@ class HomePage extends StatelessWidget {
           Center(
               child: InkWell(
             onTap: () {
-              context.go('/whatis');
+              context.go('/bubble');
             },
             splashColor: Colors.transparent,
             child: HorizontalThermometer(), // Set your desired ripple color
@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
           Center(
               child: InkWell(
             onTap: () {
-              context.go('/whatis');
+              context.go('/rules_and_info_links');
               // Navigator.push(
               //   context,
               //   MaterialPageRoute(
@@ -69,7 +69,7 @@ class HomePage extends StatelessWidget {
             },
             splashColor: Colors.lightBlueAccent,
             child: Text(
-              'What is do20?',
+              'main.rules_and_info',
               style: TextStyle(
                 shadows: [Shadow(color: Colors.red, offset: Offset(0, -5))],
                 color: Colors.transparent,
@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
                 decorationThickness: 2,
                 decorationStyle: TextDecorationStyle.solid,
               ),
-            ), // Set your desired ripple color
+            ).tr(), // Set your desired ripple color
           )),
           TwoRowTwoColumnLayout(),
 

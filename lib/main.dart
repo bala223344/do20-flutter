@@ -17,6 +17,7 @@ import 'decider_page.dart';
 import 'what_is_do20_about_page.dart';
 import 'tips_page.dart';
 import 'rules_page.dart';
+import 'rules_and_info_links_page.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -152,6 +153,11 @@ class App extends StatelessWidget {
               path: 'rules',
               builder: (BuildContext context, GoRouterState state) =>
                   RulesPage(),
+            ),
+            GoRoute(
+              path: 'rules_and_info_links',
+              builder: (BuildContext context, GoRouterState state) =>
+                  RulesAndInfoLinks(),
             ),
             GoRoute(
               path: 'tips',

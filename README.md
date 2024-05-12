@@ -10,6 +10,7 @@ color code
 ##a618ed - voilet2 (166, 24, 237, 237)
 #1ded1d - green2 (255, 222, 29, 29)
 ##d96818 - orange (217, 104, 24, 24)
+background: Color.fromARGB(0, 32, 35, 43) - main bg
 
 
 Big title - Macondo

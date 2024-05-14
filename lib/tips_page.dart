@@ -1,221 +1,68 @@
 // Copyright 2022 The Flutter Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
-import 'package:flutter/material.dart';           // new
+import 'package:flutter/material.dart'; // new
 import 'package:easy_localization/easy_localization.dart';
 import 'package:accordion/accordion.dart';
 
-
-
-
+// ignore: must_be_immutable
 class TipsPage extends StatelessWidget {
-  const TipsPage({super.key});
+  TipsPage({super.key});
+  static const headerStyle = TextStyle(color: Colors.white70);
+  static const contentStyleHeader = TextStyle(color: Colors.white70);
+  static const contentStyle = TextStyle(color: Colors.white);
 
+  List title = [
+    'tips.tip1_title',
+    'tips.tip2_title',
+  ];
+  List desc = [
+    'tips.tip1_desc',
+    'tips.tip2_desc',
+  ];
+  List icons = [
+    Icons.analytics_outlined,
+    Icons.auto_awesome,
+  ];
 
-    // This widget is the root of your application.
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const AccordionPage(),
-    );
-  }
-}
-
-/// Main example page
-class AccordionPage extends StatelessWidget //__
-{
-  static const headerStyle = TextStyle(
-      color: Color(0xffffffff), fontSize: 18, fontWeight: FontWeight.bold);
-  static const contentStyleHeader = TextStyle(
-      color: Color(0xff999999), fontSize: 14, fontWeight: FontWeight.w700);
-  static const contentStyle = TextStyle(
-      color: Color(0xff999999), fontSize: 14, fontWeight: FontWeight.normal);
-  static const loremIpsum =
-      '''Lorem ipsum is typically a corrupted version of 'De finibus bonorum et malorum', a 1st century BC text by the Roman statesman and philosopher Cicero, with words altered, added, and removed to make it nonsensical and improper Latin.''';
-  static const slogan =
-      'Do not forget to play around with all sorts of colors, backgrounds, borders, etc.';
-
-  const AccordionPage({super.key});
-
-  @override
-  build(context) => Scaffold(
-        backgroundColor: Colors.blueGrey[100],
+    return SafeArea(
+      child: Scaffold(
         appBar: AppBar(
-          title: const Text('Accordion'),
+          backgroundColor: Color.fromARGB(0, 32, 35, 43),
+          title: const Text('main.what_is_do20',
+                  style: TextStyle(
+                      fontFamily: 'Macondo', color: Color(0xFF14c614)))
+              .tr(),
         ),
         body: Accordion(
-          headerBorderColor: Colors.blueGrey,
-          headerBorderColorOpened: Colors.transparent,
-          // headerBorderWidth: 1,
-          headerBackgroundColorOpened: Colors.green,
-          contentBackgroundColor: Colors.white,
-          contentBorderColor: Colors.green,
-          contentBorderWidth: 3,
+          headerBorderColor: Color.fromRGBO(28, 28, 29, 1),
+          headerBorderColorOpened: Color.fromRGBO(28, 28, 29, 1),
+          contentBorderRadius: 0,
+          headerBackgroundColorOpened: Color.fromRGBO(51, 51, 51, 1),
+          contentBackgroundColor: Color.fromRGBO(28, 28, 29, 1),
+          headerBackgroundColor: Color.fromRGBO(19, 19, 20, 1),
+          contentBorderColor: Color.fromRGBO(28, 28, 29, 1),
+          contentBorderWidth: 0,
           contentHorizontalPadding: 20,
           scaleWhenAnimating: true,
           openAndCloseAnimation: true,
           headerPadding:
               const EdgeInsets.symmetric(vertical: 7, horizontal: 15),
           children: [
-            AccordionSection(
-              isOpen: true,
-              contentVerticalPadding: 20,
-              leftIcon:
-                  const Icon(Icons.text_fields_rounded, color: Colors.white),
-              header: const Text('Simple Text', style: headerStyle),
-              content: const Text(loremIpsum, style: contentStyle),
-            ),
-           
-           
-            AccordionSection(
-              isOpen: false,
-              leftIcon:
-                  const Icon(Icons.circle_outlined, color: Colors.black54),
-              rightIcon: const Icon(
-                Icons.keyboard_arrow_down,
-                color: Colors.black54,
-                size: 20,
+            for (int i = 0; i < title.length; i++)
+              AccordionSection(
+                isOpen: true,
+                contentVerticalPadding: 20,
+                leftIcon: Icon(icons[i], color: Colors.white70),
+                header: Text(title[i], style: headerStyle).tr(),
+                content: Text(desc[i], style: contentStyle).tr(),
               ),
-              headerBackgroundColor: Colors.transparent,
-              headerBackgroundColorOpened: Colors.amber,
-              headerBorderColor: Colors.black54,
-              headerBorderColorOpened: Colors.black54,
-              headerBorderWidth: 1,
-              contentBackgroundColor: Colors.amber,
-              contentBorderColor: Colors.black54,
-              contentBorderWidth: 1,
-              contentVerticalPadding: 30,
-              header: const Text('Custom: Header with Border',
-                  style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold)),
-              content: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                 
-                  const Flexible(
-                    child: Text(
-                      slogan,
-                      maxLines: 4,
-                      style: TextStyle(color: Colors.black45, fontSize: 17),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            AccordionSection(
-              isOpen: false,
-              leftIcon: const Icon(Icons.circle, color: Colors.white),
-              headerBackgroundColor: Colors.deepOrange,
-              headerBackgroundColorOpened: Colors.brown,
-              headerBorderWidth: 1,
-              contentBackgroundColor: Colors.brown,
-              contentBorderWidth: 0,
-              contentVerticalPadding: 30,
-              header: const Text('Custom: Other Colors', style: headerStyle),
-              content: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                
-                  const Flexible(
-                    child: Text(
-                      slogan,
-                      maxLines: 4,
-                      style: TextStyle(color: Colors.white54, fontSize: 17),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            AccordionSection(
-              isOpen: false,
-              leftIcon: const Icon(Icons.circle, color: Colors.white),
-              headerBackgroundColor: Colors.green[900],
-              headerBackgroundColorOpened: Colors.lightBlue,
-              headerBorderColorOpened: Colors.yellow,
-              headerBorderWidth: 10,
-              contentBackgroundColor: Colors.lightBlue,
-              contentBorderColor: Colors.yellow,
-              contentBorderWidth: 10,
-              contentVerticalPadding: 30,
-              header: const Text('Custom: Heavy Borders', style: headerStyle),
-              content: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                
-                  const Flexible(
-                    child: Text(
-                      slogan,
-                      maxLines: 4,
-                      style: TextStyle(color: Colors.white54, fontSize: 17),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            AccordionSection(
-              isOpen: false,
-              leftIcon: const Icon(Icons.circle, color: Colors.white),
-              headerBorderRadius: 30,
-              headerBackgroundColor: Colors.purple,
-              headerBackgroundColorOpened: Colors.purple,
-              headerBorderColorOpened: Colors.white,
-              headerBorderWidth: 2,
-              contentBackgroundColor: Colors.purple,
-              contentBorderColor: Colors.white,
-              contentBorderWidth: 2,
-              contentBorderRadius: 100,
-              contentVerticalPadding: 30,
-              header: const Text('Custom: Very Round', style: headerStyle),
-              content: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                
-                  const Flexible(
-                    child: Text(
-                      slogan,
-                      maxLines: 4,
-                      style: TextStyle(color: Colors.white54, fontSize: 17),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            AccordionSection(
-              isOpen: false,
-              leftIcon: const Icon(Icons.circle, color: Colors.white),
-              headerBorderRadius: 0,
-              headerBackgroundColor: Colors.black87,
-              headerBackgroundColorOpened: Colors.black87,
-              headerBorderColorOpened: const Color(0xffaaaaaa),
-              headerBorderWidth: 1,
-              contentBackgroundColor: Colors.black54,
-              contentBorderColor: const Color(0xffaaaaaa),
-              contentBorderWidth: 1,
-              contentBorderRadius: 0,
-              contentVerticalPadding: 30,
-              header: const Text('Android', style: headerStyle),
-              content: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                 
-                  const Flexible(
-                    child: Text(
-                      slogan,
-                      maxLines: 4,
-                      style: TextStyle(color: Colors.white54, fontSize: 17),
-                    ),
-                  ),
-                ],
-              ),
-            ),
           ],
         ),
-      );
- //__  
+      ),
+    );
+  }
 }

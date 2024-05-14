@@ -23,6 +23,26 @@
       "title4": "20 MINS A DAY! IS ALL IT ASK FOR!",
       "desc4" : "Little. But Heavy. A person focusing on a thing for 20 minutes without getting distracted is considered an achiever in modern world. Pat yourself to become one."
 
-    }
+    },
+    "instructions" : {
+      "what_is_this_about" : "What is this app about?",
+      "what_can_be_done" : "What can be done in 20 mins?",
+      "why_pay" : "Why pay?",
+      "what_is_this_about_desc" : "Ok, You should have got the gist of this on the intro screen when you installed it. But if you missed it this app is definitely for you, you careless wanderer!.\n\nThis app is designed to help you develop a habit of working for at least 20 minutes a day.",
+      "what_can_be_done_desc" : "Twenty minutes can be surprisingly productive! Start something on what you have been yearning for  a long time.\n\nOr do important stuff which could make your day slightly better.\n\nOr It can be learning a new thing, doing official work, doing a long term chore, reading a book.",
+      "why_pay_desc" : "All good things come at a cost! :) Or People tend to value it less if it is free. Also we have a tiny team of bread winners who develop, maintain, add features and monitor your activities manually. And Oh God! Almost forgot the vital part. You don’t work if someone isn’t monitoring. Do you?.\n\nWe will check on your reports from time to time and send you personalised pats on your back if you do well. Or try to cheer you up if you are quiet for a while.\n\nNo AI or automated things. World is already filled with computer generated messages. In future if things go well for us we will send you personalised gifts, however small it can be.\n\nNote  : You can try the app for free all the time. Just that it won’t store your data. Storing data in the cloud is the thing which costs us.\n\nAlso there is no fun without seeing your report card. So go rock on the premium side."
+    },
 
+    "rules" : {
+      "title" : "These rules are created to avoid \"novelty fatigue\", which is when something initially excites us because it's new and different, but over time, it becomes less interesting or engaging",
+      "1" : "Rule #1. You can start up to three bubbles per day as a maximum limit.",
+      "2" : "Rule #2. There's an hour waiting period before you can start another bubble. This is to prevent burnout from excessive use and encourage enjoying the app's intended purpose."
+    }
+,
+    "tips" : {
+      "tip1_title" : "Consistent Effort",  
+      "tip1_desc" : "Even if your efforts don't always lead to success, the act of ‘being consistently involved’ is something you'll remember.\n\nIt's through these moments of dedication, like preparing for a high school competition, a running event, or an important exam, that you measure your worth.\n\nEvery day, commit to 20 minutes of focused effort to build a foundation of productive memories.  ",
+      "tip2_title" : "Creating Your Happy Space",
+      "tip2_desc" : "Ever heard of a happy space at home? - This is how it goes! You take up a small space in your living room.\n\nThis space, free from distractions (especially internet junks!), is filled with everything that fuels your creativity: books, sketches, musical instruments or anything that ignites your passion.\n\nStart by spending focused, high-quality time there, even if it's just a few minutes. The key is consistency – this spot will gradually transform into your happy zone, a place you naturally gravitate towards to pursue activities that enrich your life.\n\nThis app acts as your personal \"happy trigger\". Every time you open it, you'll be prompted to tackle just ONE meaningful task, something that contributes to your overall well-being."
+    }
   }

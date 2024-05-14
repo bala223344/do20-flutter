@@ -37,8 +37,7 @@ class RulesAndInfoLinks extends StatelessWidget {
           for (int i = 0; i < title.length; i++)
           Center(
             child: Card(
-              color: Color.fromARGB(
-                  0, 21, 23, 27), // Set background color for the Card
+              color: Color.fromARGB(0, 21, 23, 27), // Set background color for the Card
 
               child: Column(
                 mainAxisSize: MainAxisSize.min,

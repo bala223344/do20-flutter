@@ -24,8 +24,8 @@ class BubblePage extends StatefulWidget {
 class _BubblePageState extends State<BubblePage> {
   bool _showText = true;
   bool _fetchedAlready = false;
-  double _wav1 = 0.9;
-  double _wav2 = 0.85;
+  double _wav1 = 0.4;
+  double _wav2 = 0.45;
   void _toggleText() async {
     await DatabaseService().addBubble(startedAt: Timestamp.now());
     print("saveeed");
@@ -118,7 +118,7 @@ class _BubblePageState extends State<BubblePage> {
         Expanded(
             child: ListView(children: <Widget>[
           SizedBox(height: 26.0),
-          Center(child: Text('You have pressed the button $_start  times.')),
+          Center(child: Text('n $_start  times.')),
           Center(
               child: Container(
                   child: Text(
@@ -137,30 +137,32 @@ class _BubblePageState extends State<BubblePage> {
                   offset: Offset(0.0, 8.0),
                 ),
               ]),
-              child: WaterDrop(
-                params: [
-                  WaterDropParam(top: 0, height: 128, left: 0, width: 128),
-                ],
-                child: ClipOval(
-                  child: WaveWidget(
-                    config: CustomConfig(
-                      colors: [
-                        Color.fromARGB(255, 140, 189, 211),
-                        Color.fromARGB(255, 18, 38, 57),
-                      ],
-                      durations: [
-                        5000,
-                        4000,
-                      ],
-                      heightPercentages: [
-                        _wav1,
-                        _wav2,
-                      ],
-                    ),
-                    backgroundColor: Color.fromARGB(255, 255, 151, 6),
-                    size: Size(double.infinity, double.infinity),
-                    waveAmplitude: 0,
+              child: ClipOval(
+                child: WaveWidget(
+                  config: CustomConfig(
+                    colors: [
+                      Color.fromARGB(255, 140, 189, 211),
+                      Color.fromARGB(255, 18, 38, 57),
+                    ],
+                    durations: [
+                      5000,
+                      4000,
+                    ],
+                    heightPercentages: [
+                      _wav1,
+                      _wav2,
+                    ],
                   ),
+                  backgroundColor: Color.fromARGB(255, 255, 151, 6),
+                  backgroundImage:      
+                   DecorationImage(
+                    image: AssetImage('assets/images/image1.png'), // Replace with your image
+                    fit: BoxFit.cover, // Adjust fit as desired
+                  ),
+                       
+                            
+                  size: Size(double.infinity, double.infinity),
+                  waveAmplitude: 0,
                 ),
               ),
             ),

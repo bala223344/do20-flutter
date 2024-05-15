@@ -23,7 +23,7 @@ class _HorizontalThermometerState extends State<HorizontalThermometer>
     _animationController.addListener(() {
       setState(() {
         _translationY =
-            20.0 * _animationController.value; // Adjust movement range
+            8.0 * _animationController.value; // Adjust movement range
       });
     });
   }
@@ -44,7 +44,7 @@ class _HorizontalThermometerState extends State<HorizontalThermometer>
                 offset: Offset(0.0, _translationY),
                 child: Image.asset(
                   'assets/images/image1.png',
-                  height: 110,
+                  height: 60,
                 )),
 
         Text('main.start_bubble2',

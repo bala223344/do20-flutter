@@ -24,28 +24,29 @@ class DatabaseService {
   Future<String?> addBubble({
     required Timestamp startedAt,
   }) async {
-
-      if (FirebaseAuth.instance.currentUser == null) {
-       throw Exception('Must be logged in');
-     }
+    if (FirebaseAuth.instance.currentUser == null) {
+      throw Exception('Must be logged in');
+    }
     try {
-      print ("adding bubble");
-      print (FirebaseAuth.instance.currentUser);
-      var data = {  'startedAt': DateTime.now().millisecondsSinceEpoch,
-      'userId': FirebaseAuth.instance.currentUser?.uid} ;
-          FirebaseFirestore.instance.collection('bubbles')
-           .add(data);
-    
-      // Call the user's CollectionReference to add a new user
      
+    
+      var data = {
+        'startedAt': DateTime.now().millisecondsSinceEpoch,
+        'userId': FirebaseAuth.instance.currentUser?.uid
+      };
+      var docRef = FirebaseFirestore.instance.collection('bubbles').add(data);
+       print("adding bubble");
+      print(docRef);
+
+      // Call the user's CollectionReference to add a new user
+
       return 'success';
     } catch (e) {
-      print (e);
+      print(e);
       print('Error adding user');
     }
     return null;
   }
-
 
   // Future<String?> getUser(String email) async {
   //   try {
@@ -62,18 +63,18 @@ class DatabaseService {
     try {
       CollectionReference bubbles =
           FirebaseFirestore.instance.collection('bubbles');
-         var docSnapshot =  await bubbles.get();
-            //   db.collection("bubbles").get().then(
-  //   (querySnapshot) {
-  //     print("Successfully completed");
-  //     for (var docSnapshot in querySnapshot.docs) {
-  //       print('${docSnapshot.id} => ${docSnapshot.data()}');
-  //     }
-  //   },
-  //   onError: (e) => print("Error completing: $e"),
-  // );
-     // final snapshot = await users.doc(email).get();
-    //  final data = snapshot.data() as Map<String, dynamic>;
+      var docSnapshot = await bubbles.get();
+      //   db.collection("bubbles").get().then(
+      //   (querySnapshot) {
+      //     print("Successfully completed");
+      //     for (var docSnapshot in querySnapshot.docs) {
+      //       print('${docSnapshot.id} => ${docSnapshot.data()}');
+      //     }
+      //   },
+      //   onError: (e) => print("Error completing: $e"),
+      // );
+      // final snapshot = await users.doc(email).get();
+      //  final data = snapshot.data() as Map<String, dynamic>;
       return docSnapshot.docs;
     } catch (e) {
       return [];

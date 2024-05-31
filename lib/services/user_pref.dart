@@ -16,8 +16,6 @@ class UserPreferenceService {
      // var rec = await DatabaseServiceUserPreferences()
        //   .addOrUpdatePref(userId: user!.uid, );
 
-      print("printing langggg");
-      print(lang);
 
       if (lang == '') {
         //  prefs.setString('lang', 'en');

@@ -11,7 +11,7 @@ import 'package:do20_app/services/bubble_database.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
-import 'utils/water_drop.dart';
+import 'package:uuid/uuid.dart';
 
 class BubblePage extends StatefulWidget {
   BubblePage({super.key});
@@ -25,50 +25,64 @@ class _BubblePageState extends State<BubblePage> {
   bool _fetchedAlready = false;
   // double _wav1 = 0.1; // bottom
   // double _wav2 = 0.15;
-  double _wav1 = 0.9; // bottom
+  double _wav1 = 0.9; //fill just the bottom at first
   double _wav2 = 0.95;
-  void _toggleText() async {
-    await DatabaseService().addBubble(startedAt: Timestamp.now());
-    print("saveeed");
-    setState(() {
-      _showText = !_showText;
-    });
-  }
+
 
   late Timer _timer;
-  double _start = 1200.00; //1200 20 minustes
-  late double partWav1 = 0.00083;
-  late double partWav2 = 0.00089;
+  // double _start = 1200.00; //1200 20 minustes
+  // late double partWav1 = 0.00083; //1/1200
+  // late double partWav2 = 0.00089;
+
+  double _start = 120.00; //120 2 minustes
+  late double partWav1 = 0.0083; //1/120
+  late double partWav2 = 0.0089;
+
+  // double _start = 12.00; //
+  // late double partWav1 = 0.083; //1/120
+  // late double partWav2 = 0.089;
 
   void startTimer() async {
     _fetchedAlready = true;
     const oneSec = Duration(seconds: 1);
-     await DatabaseService().addBubble(startedAt: Timestamp.now()); //don't wait up
+
+    String documentId = Uuid().v4();
+    var docRefFuture =
+        await DatabaseService().addBubble(documentId: documentId);
+
+
+    print("saveeed");
+
+    print(documentId);
+    // var docSnapshot = docRefFuture!.get();
+
+    // docSnapshot.data()!;
+
+    print("nothinging");
+
     _timer = Timer.periodic(
       oneSec,
-      (Timer timer)  {
+      (Timer timer) {
         if (_start == 0) {
           if (mounted) {
-            setState(() {
-              _wav1 = -0.2;
-              _wav1 = -0.25;
+            setState(()  {
+              _wav1 = -0.2; //fill it up
+              _wav1 = -0.25; //fill it up
+              DatabaseService().updateBubble(documentId: documentId);
               timer.cancel();
+
               print("saving records! done");
             });
           }
         } else {
           if (mounted) {
-            
             setState(() {
-             
               _start--;
               partWav1 = (_wav1 / _start);
               partWav2 = (_wav2 / _start);
               _wav1 -= partWav1;
               _wav2 -= partWav2;
-              
             });
-
           }
         }
       },
@@ -76,6 +90,8 @@ class _BubblePageState extends State<BubblePage> {
   }
 
   void showDialog() {
+
+    // DatabaseService().updateBubble(documentId: "d6923028-e6ae-4533-94ae-c189eca4f1a5");
     showGeneralDialog(
         context: context,
         barrierDismissible: true,

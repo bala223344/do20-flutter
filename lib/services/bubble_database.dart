@@ -2,45 +2,45 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class DatabaseService {
-  // Future<String?> addUser({
-  //   required String fullName,
-  //   required String age,
-  //   required String email,
-  // }) async {
-  //   try {
-  //     CollectionReference users =
-  //         FirebaseFirestore.instance.collection('users');
-  //     // Call the user's CollectionReference to add a new user
-  //     await users.doc(email).set({
-  //       'full_name': fullName,
-  //       'age': age,fullName
-  //     });
-  //     return 'success';
-  //   } catch (e) {
-  //     return 'Error adding user';
-  //   }
-  // }
-
-  Future<String?> addBubble({
-    required Timestamp startedAt,
-  }) async {
+  Future<String?> updateBubble({required String documentId}) async {
     if (FirebaseAuth.instance.currentUser == null) {
       throw Exception('Must be logged in');
     }
     try {
-     
-    
+
+      final docRef =  FirebaseFirestore.instance
+          .collection('bubbles')
+          .doc(documentId);
+  
+      //var data = prefObj.docs[0].data();
+     docRef 
+          .update({'endedAt': DateTime.now().millisecondsSinceEpoch});
+          //FirebaseFirestore.instance.collection('bubbles').add(data);
+
+      // Call the user's CollectionReference to add a new user
+    } catch (e) {
+      print(e);
+      print('Error adding user');
+    }
+    return null;
+  }
+
+  Future<DocumentReference?> addBubble({required String documentId}) async {
+    if (FirebaseAuth.instance.currentUser == null) {
+      throw Exception('Must be logged in');
+    }
+    try {
       var data = {
         'startedAt': DateTime.now().millisecondsSinceEpoch,
         'userId': FirebaseAuth.instance.currentUser?.uid
       };
-      var docRef = FirebaseFirestore.instance.collection('bubbles').add(data);
-       print("adding bubble");
-      print(docRef);
+      var docRef =
+          FirebaseFirestore.instance.collection('bubbles').doc(documentId);
+      await docRef.set(data);
+
+      //FirebaseFirestore.instance.collection('bubbles').add(data);
 
       // Call the user's CollectionReference to add a new user
-
-      return 'success';
     } catch (e) {
       print(e);
       print('Error adding user');

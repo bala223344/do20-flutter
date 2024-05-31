@@ -21,6 +21,8 @@ class DatabaseServiceUserPreferences {
   //   }
   // }
 
+
+
   Future<String?> addOrUpdatePref(
       {required String userId,
       required String key,
@@ -29,16 +31,13 @@ class DatabaseServiceUserPreferences {
       throw Exception('Must be logged in');
     }
     try {
-      print("DEBUGGY1111");
 
       var prefObj = await FirebaseFirestore.instance
           .collection('user_preferences')
           .where("userId", isEqualTo: userId)
           .get();
 
-      print("DEBUGGY");
 
-      print(prefObj.docs.length);
       //must be 1 not > or <
       if (prefObj.docs.length == 1) {
         //var data = prefObj.docs[0].data();

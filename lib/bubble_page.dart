@@ -148,7 +148,7 @@ class _BubblePageState extends State<BubblePage> {
         Expanded(
             child: ListView(children: <Widget>[
           SizedBox(height: 26.0),
-          _start < 300 && _start > 0
+          _start < 30000 && _start > 0 // < 300
               ? Center(child: Text('n $_start  times.'))
               : Container(),
           Center(

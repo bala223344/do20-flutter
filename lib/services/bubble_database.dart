@@ -7,15 +7,12 @@ class DatabaseService {
       throw Exception('Must be logged in');
     }
     try {
+      final docRef =
+          FirebaseFirestore.instance.collection('bubbles').doc(documentId);
 
-      final docRef =  FirebaseFirestore.instance
-          .collection('bubbles')
-          .doc(documentId);
-  
       //var data = prefObj.docs[0].data();
-     docRef 
-          .update({'endedAt': DateTime.now().millisecondsSinceEpoch});
-          //FirebaseFirestore.instance.collection('bubbles').add(data);
+      docRef.update({'endedAt': DateTime.now().millisecondsSinceEpoch});
+      //FirebaseFirestore.instance.collection('bubbles').add(data);
 
       // Call the user's CollectionReference to add a new user
     } catch (e) {
@@ -78,6 +75,68 @@ class DatabaseService {
       return docSnapshot.docs;
     } catch (e) {
       return [];
+    }
+  }
+
+  Future<Map<String, dynamic>> checkBubbleEligibility() async {
+    try {
+      CollectionReference bubbles =
+          FirebaseFirestore.instance.collection('bubbles');
+
+      // Current time
+      DateTime now = DateTime.now();
+
+      // 1 hour ago
+      DateTime oneHourAgo = now.subtract(Duration(hours: 1));
+
+      // 24 hours ago
+      DateTime twentyFourHoursAgo = now.subtract(Duration(hours: 24));
+
+      // Query for records in the last hour
+      var lastHourQuery = await bubbles
+          .where('userId', isEqualTo: FirebaseAuth.instance.currentUser?.uid)
+          .where('startedAt', isGreaterThanOrEqualTo: oneHourAgo)
+          .orderBy('startedAt', descending: true)
+          .get();
+
+      // Query for records in the last 24 hours
+      var last24HoursQuery = await bubbles
+          .where('userId', isEqualTo: FirebaseAuth.instance.currentUser?.uid)
+          .where('startedAt', isGreaterThanOrEqualTo: twentyFourHoursAgo)
+          .get();
+
+      // Number of records in the last hour
+      int recordsInLastHour = lastHourQuery.docs.length;
+
+      // Number of records in the last 24 hours
+      int recordsInLast24Hours = last24HoursQuery.docs.length;
+
+      // Get the latest timestamp if there are records in the last hour
+      DateTime? latestTimestamp;
+      if (recordsInLastHour > 0) {
+        latestTimestamp =
+            (lastHourQuery.docs.first['startedAt'] as Timestamp).toDate();
+      }
+
+      // Calculate the time remaining for 1 hour to elapse since the latest record
+      Duration? timeRemaining;
+      if (latestTimestamp != null) {
+        timeRemaining = latestTimestamp.add(Duration(hours: 1)).difference(now);
+      }
+
+      return {
+        'hasRecordsInLastHour': recordsInLastHour > 0,
+        'recordsInLast24Hours': recordsInLast24Hours,
+        'latestTimestamp': latestTimestamp,
+        'timeRemaining': timeRemaining?.inMinutes, // Time remaining in minutes
+      };
+    } catch (e) {
+      return {
+        'hasRecordsInLastHour': false,
+        'recordsInLast24Hours': 0,
+        'latestTimestamp': null,
+        'timeRemaining': null,
+      };
     }
   }
 }

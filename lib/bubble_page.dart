@@ -21,8 +21,9 @@ class BubblePage extends StatefulWidget {
 }
 
 class _BubblePageState extends State<BubblePage> {
+
   bool _showText = true;
-  bool _fetchedAlready = false;
+  bool _started = false;
   // double _wav1 = 0.1; // bottom
   // double _wav2 = 0.15;
   double _wav1 = 20.9; //high values show blank
@@ -45,6 +46,17 @@ class _BubblePageState extends State<BubblePage> {
   int recordsInLast24Hours = 0;
   int? timeRemaining;
 
+
+
+  bool bubbleDone = false;
+
+  void _reloadPage() {
+    Navigator.of(context).pop();
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) => BubblePage(),
+    ));
+  }
+
   @override
   void initState() {
     super.initState();
@@ -66,14 +78,14 @@ class _BubblePageState extends State<BubblePage> {
 
     // Display warning message if there are records in the last hour
     if (hasRecordsInLastHour && timeRemaining != null) {
-    //  _showWarningDialog();
+      //  _showWarningDialog();
     }
   }
 
   void startTimer() async {
     _wav1 = 0.9;
     _wav1 = 0.95;
-    _fetchedAlready = true;
+    _started = true;
     const oneSec = Duration(seconds: 1);
 
     String documentId = Uuid().v4();
@@ -99,7 +111,7 @@ class _BubblePageState extends State<BubblePage> {
               _wav1 = -0.25; //fill it up
               DatabaseService().updateBubble(documentId: documentId);
               timer.cancel();
-
+              bubbleDone = true;
               print("saving records! done");
             });
           }
@@ -181,9 +193,34 @@ class _BubblePageState extends State<BubblePage> {
               : Container(),
           Center(
               child: Text(
-            'fetched already? $_fetchedAlready',
+            'fetched already? $_started',
             // style: TextStyle(color: const Color.fromARGB(255, 14, 0, 0)),
           )),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 20),
+                if (hasRecordsInLastHour)
+                  Text(
+                    'You created a bubble recently. Please wait for $timeRemaining minutes before creating another one.',
+                    style: TextStyle(fontSize: 16, color: Colors.red),
+                  )
+                else if (recordsInLast24Hours >= 3)
+                  Text(
+                    'You have created $recordsInLast24Hours bubbles in the last 24 hours. Please wait for $timeRemaining minutes before creating another one.',
+                    style: TextStyle(fontSize: 18),
+                  )
+                else
+                  Text(
+                    'You can create a new bubble now!',
+                    style: TextStyle(fontSize: 16, color: Colors.green),
+                  ),
+              ],
+            ),
+          ),
           Align(
             child: Container(
               height: 128,
@@ -224,6 +261,20 @@ class _BubblePageState extends State<BubblePage> {
               ),
             ),
           ),
+          if (bubbleDone)
+            Center(
+              child: Padding(
+                padding: EdgeInsets.all(
+                    16.0), // You can adjust the padding value as needed
+                child: Text(
+                  'Well done!',
+                  style: TextStyle(
+                      height: 2,
+                      fontSize: 12,
+                      color: Color.fromARGB(213, 255, 252, 252)),
+                ),
+              ),
+            ),
           Center(
             child: Padding(
               padding: EdgeInsets.all(
@@ -240,12 +291,29 @@ class _BubblePageState extends State<BubblePage> {
         ]))
       ]),
       
-      floatingActionButton: FloatingActionButton(
-        onPressed: startTimer,
-        tooltip: 'main.start_20_minutes_bubble'.tr(),
-        child: const Icon(Icons.play_arrow),
-      ),
+      floatingActionButton: !_started && !bubbleDone
+          ? FloatingActionButton(
+              onPressed: startTimer,
+              tooltip: 'main.start_20_minutes_bubble'.tr(),
+              child: const Icon(Icons.play_arrow),
+            )
+          : _started && !bubbleDone
+              ? FloatingActionButton(
+                onPressed: null,
+                  tooltip: 'main.bubble_started'.tr(),
+                  child: CircularProgressIndicator(
+                color: Colors.white, // Make the indicator visible against the button's color
+              ),
+                )
+              : _started && bubbleDone
+                  ? FloatingActionButton(
+                      onPressed: _reloadPage,
+                      tooltip: 'main.reload'.tr(),
+                      child: const Icon(Icons.refresh),
+                    )
+                  : null, // Add any additional logic if necessary
     );
+    
 
     return Container(
       child: Column(

@@ -4,6 +4,8 @@
       "world": "Welt!",
       "helloWorld": "@:main.hello @:main.world",
       "start_20_minutes_bubble":"20 min weltzDE!",
+      "bubble_started" : "Bubble started",
+      "reload" : "Reload", 
       "finish" : "Finish",
       "next" : "Next",
       "start_bubble1" : "",

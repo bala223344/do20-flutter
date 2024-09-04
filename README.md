@@ -1,5 +1,5 @@
 color code
-#edca1d - yellow
+#edca1d - yellow - 255, 237, 202, 29
 #c61414 - red 
 
 --

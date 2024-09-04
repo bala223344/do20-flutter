@@ -12,6 +12,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:wave/config.dart';
 import 'package:wave/wave.dart';
 import 'package:uuid/uuid.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class BubblePage extends StatefulWidget {
   BubblePage({super.key});
@@ -298,13 +299,10 @@ class _BubblePageState extends State<BubblePage> {
               child: const Icon(Icons.play_arrow),
             )
           : _started && !bubbleDone
-              ? FloatingActionButton(
-                onPressed: null,
-                  tooltip: 'main.bubble_started'.tr(),
-                  child: CircularProgressIndicator(
-                color: Colors.white, // Make the indicator visible against the button's color
-              ),
-                )
+              ? SpinKitWaveSpinner(
+                color: Color.fromARGB(255, 237, 202, 29), // Change to your desired color
+                size: 50.0,
+              )
               : _started && bubbleDone
                   ? FloatingActionButton(
                       onPressed: _reloadPage,

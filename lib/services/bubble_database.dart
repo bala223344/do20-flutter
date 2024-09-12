@@ -11,7 +11,7 @@ class DatabaseService {
           FirebaseFirestore.instance.collection('bubbles').doc(documentId);
 
       //var data = prefObj.docs[0].data();
-      docRef.update({'endedAt': DateTime.now().millisecondsSinceEpoch});
+      docRef.update({'endedAt': DateTime.now()});
       //FirebaseFirestore.instance.collection('bubbles').add(data);
 
       // Call the user's CollectionReference to add a new user
@@ -28,7 +28,7 @@ class DatabaseService {
     }
     try {
       var data = {
-        'startedAt': DateTime.now().millisecondsSinceEpoch,
+        'startedAt': DateTime.now(),
         'userId': FirebaseAuth.instance.currentUser?.uid
       };
       var docRef =
@@ -80,29 +80,36 @@ class DatabaseService {
 
   Future<Map<String, dynamic>> checkBubbleEligibility() async {
     try {
+      print("is it even coming here?");
       CollectionReference bubbles =
           FirebaseFirestore.instance.collection('bubbles');
 
-      // Current time
-      DateTime now = DateTime.now();
+      DateTime nowUtc = DateTime.now().toUtc();
+      DateTime startOfDayUtc =
+          DateTime.utc(nowUtc.year, nowUtc.month, nowUtc.day);
 
-      // 1 hour ago
-      DateTime oneHourAgo = now.subtract(Duration(hours: 1));
+      DateTime endOfDayUtc =
+          startOfDayUtc.add(Duration(hours: 23, minutes: 59, seconds: 59));
 
-      // 24 hours ago
-      DateTime twentyFourHoursAgo = now.subtract(Duration(hours: 24));
+      // 1 hour ago in milliseconds
+      DateTime oneHourAgo = DateTime.now().subtract(Duration(hours: 1));
 
       // Query for records in the last hour
       var lastHourQuery = await bubbles
           .where('userId', isEqualTo: FirebaseAuth.instance.currentUser?.uid)
-          .where('startedAt', isGreaterThanOrEqualTo: oneHourAgo)
+          .where('startedAt',
+              isGreaterThanOrEqualTo: Timestamp.fromDate(oneHourAgo))
           .orderBy('startedAt', descending: true)
           .get();
 
       // Query for records in the last 24 hours
       var last24HoursQuery = await bubbles
           .where('userId', isEqualTo: FirebaseAuth.instance.currentUser?.uid)
-          .where('startedAt', isGreaterThanOrEqualTo: twentyFourHoursAgo)
+          .where('startedAt',
+              isGreaterThanOrEqualTo: Timestamp.fromDate(startOfDayUtc))
+          .where('startedAt',
+              isLessThanOrEqualTo: Timestamp.fromDate(endOfDayUtc))
+          .orderBy('startedAt', descending: true)
           .get();
 
       // Number of records in the last hour
@@ -114,14 +121,15 @@ class DatabaseService {
       // Get the latest timestamp if there are records in the last hour
       DateTime? latestTimestamp;
       if (recordsInLastHour > 0) {
-        latestTimestamp =
-            (lastHourQuery.docs.first['startedAt'] as Timestamp).toDate();
+        latestTimestamp = (lastHourQuery.docs.first['startedAt'] as Timestamp)
+            .toDate(); // Convert Timestamp to DateTime
       }
 
       // Calculate the time remaining for 1 hour to elapse since the latest record
       Duration? timeRemaining;
       if (latestTimestamp != null) {
-        timeRemaining = latestTimestamp.add(Duration(hours: 1)).difference(now);
+        timeRemaining =
+    timeRemaining = latestTimestamp.add(Duration(hours: 1)).difference(DateTime.now());
       }
 
       return {
@@ -131,6 +139,8 @@ class DatabaseService {
         'timeRemaining': timeRemaining?.inMinutes, // Time remaining in minutes
       };
     } catch (e) {
+      print("exectuing catch");
+      print(e);
       return {
         'hasRecordsInLastHour': false,
         'recordsInLast24Hours': 0,

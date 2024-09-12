@@ -22,7 +22,6 @@ class BubblePage extends StatefulWidget {
 }
 
 class _BubblePageState extends State<BubblePage> {
-
   bool _showText = true;
   bool _started = false;
   // double _wav1 = 0.1; // bottom
@@ -47,8 +46,6 @@ class _BubblePageState extends State<BubblePage> {
   int recordsInLast24Hours = 0;
   int? timeRemaining;
 
-
-
   bool bubbleDone = false;
 
   void _reloadPage() {
@@ -71,10 +68,12 @@ class _BubblePageState extends State<BubblePage> {
     // Call the checkUserRecords function
     var result = await DatabaseService().checkBubbleEligibility();
 
+    print('resultddddd');
+    print(result);
     setState(() {
       hasRecordsInLastHour = result['hasRecordsInLastHour'] ?? false;
       recordsInLast24Hours = result['recordsInLast24Hours'] ?? 0;
-      timeRemaining = result['timeRemaining'] ?? null;
+      timeRemaining = result['timeRemaining'];
     });
 
     // Display warning message if there are records in the last hour
@@ -183,7 +182,7 @@ class _BubblePageState extends State<BubblePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sample Code'),
+        title: const Text('Doing Stuff'),
       ),
       body: Column(children: [
         Expanded(
@@ -212,7 +211,7 @@ class _BubblePageState extends State<BubblePage> {
                 else if (recordsInLast24Hours >= 3)
                   Text(
                     'You have created $recordsInLast24Hours bubbles in the last 24 hours. Please wait for $timeRemaining minutes before creating another one.',
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 18, color: Colors.red),
                   )
                 else
                   Text(
@@ -238,8 +237,8 @@ class _BubblePageState extends State<BubblePage> {
                 child: WaveWidget(
                   config: CustomConfig(
                     colors: [
-                      Colors.blue[300]!.withOpacity(0.5),
-                      Colors.cyan[400]!.withOpacity(0.5)
+                      Colors.amber[300]!.withOpacity(0.8),
+                      Colors.amber[400]!.withOpacity(1.0)
                     ],
                     durations: [
                       5000,
@@ -291,7 +290,7 @@ class _BubblePageState extends State<BubblePage> {
           )
         ]))
       ]),
-      
+
       floatingActionButton: !_started && !bubbleDone
           ? FloatingActionButton(
               onPressed: startTimer,
@@ -300,9 +299,10 @@ class _BubblePageState extends State<BubblePage> {
             )
           : _started && !bubbleDone
               ? SpinKitWaveSpinner(
-                color: Color.fromARGB(255, 237, 202, 29), // Change to your desired color
-                size: 50.0,
-              )
+                  color: Color.fromARGB(
+                      255, 237, 202, 29), // Change to your desired color
+                  size: 50.0,
+                )
               : _started && bubbleDone
                   ? FloatingActionButton(
                       onPressed: _reloadPage,
@@ -311,7 +311,6 @@ class _BubblePageState extends State<BubblePage> {
                     )
                   : null, // Add any additional logic if necessary
     );
-    
 
     return Container(
       child: Column(
